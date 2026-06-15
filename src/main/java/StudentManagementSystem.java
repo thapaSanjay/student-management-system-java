@@ -62,11 +62,7 @@ public class StudentManagementSystem {
 
     public static void main(String[] args) {
         
-         ArrayList<Student> students = new ArrayList<>();
-       
-        students.add(new Student(1,"Sanjay Thapa", 29));
-        students.add(new Student(2,"Sabin Sapkota", 28));
-        students.add(new Student(3,"Pukar Katwal", 26));
+        ArrayList<Student> students = new ArrayList<>();
           
         Scanner input = new Scanner(System.in);
         boolean isTrue = true;
