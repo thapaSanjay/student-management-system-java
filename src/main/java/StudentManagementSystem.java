@@ -14,7 +14,7 @@ public class StudentManagementSystem {
     public static void  searchStudent( ArrayList<Student> students, int id) {
         for(Student student: students) {
              
-            if (student.id == id) {
+            if (student.getId() == id) {
                 student.displayStudent();
                 return;
             }
@@ -25,7 +25,7 @@ public class StudentManagementSystem {
     public static void deleteStudent(ArrayList<Student> students, int id) {
           
           for(int i = 0; i< students.size(); i++) {
-              if(students.get(i).id == id) {
+              if(students.get(i).getId() == id) {
                   students.remove(i);
                   System.out.printf("Student with id: %d deleted successfully!%n", id);
                   return;
@@ -45,9 +45,9 @@ public class StudentManagementSystem {
     public static void updateStudent(ArrayList<Student> students, int updateId, String newName, int newAge ) {
         
         for(Student s: students) {
-            if(s.id == updateId) {
-                s.name = newName;
-                s.age = newAge;
+            if(s.getId() == updateId) {
+                s.setName(newName);
+                s.setAge(newAge);
                 System.out.println("Student updated successfully");
                 s.displayStudent();
                 return;
@@ -63,12 +63,14 @@ public class StudentManagementSystem {
     public static void main(String[] args) {
         
         ArrayList<Student> students = new ArrayList<>();
-          
+        students.add(new Student(1,"Sanjay Thapa",29));
+        students.add(new Student(2,"Sabin Sapkota",28));
+        students.add(new Student(3,"Pukar Katwal",26)); 
         Scanner input = new Scanner(System.in);
         boolean isTrue = true;
         while(isTrue) {
             System.out.println("\n=====" + " STUDENT MANAGEMENT SYSTEM " + "=====\n");
-            
+           
             System.out.println("1. View Students");
             System.out.println("2. Search Student");
             System.out.println("3. Add Student");
