@@ -10,56 +10,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class StudentManagementSystem {
-    
-    public static void  searchStudent( ArrayList<Student> students, int id) {
-        for(Student student: students) {
-             
-            if (student.getId() == id) {
-                student.displayStudent();
-                return;
-            }
-        }
-         System.out.println("No Students found!");
-    }
-    
-    public static void deleteStudent(ArrayList<Student> students, int id) {
-          
-          for(int i = 0; i< students.size(); i++) {
-              if(students.get(i).getId() == id) {
-                  students.remove(i);
-                  System.out.printf("Student with id: %d deleted successfully!%n", id);
-                  return;
-              }
-          }
-          
-           System.out.println("Student not found!");
-        
-    }
-    
-    public static void displayStudent(ArrayList<Student> students) {
-        for(Student s : students) {
-            s.displayStudent();
-        }
-    }
-    
-    public static void updateStudent(ArrayList<Student> students, int updateId, String newName, int newAge ) {
-        
-        for(Student s: students) {
-            if(s.getId() == updateId) {
-                s.setName(newName);
-                s.setAge(newAge);
-                System.out.println("Student updated successfully");
-                s.displayStudent();
-                return;
-            }
-        }
-       System.out.println("Student not found");  
-        
-    }
-       
-    
    
-
     public static void main(String[] args) {
         
         ArrayList<Student> students = new ArrayList<>();
@@ -81,13 +32,13 @@ public class StudentManagementSystem {
             int userChoice = input.nextInt();
             switch(userChoice) {
                 case 1:
-                    displayStudent(students);
+                    StudentService.displayStudent(students);
                     break;
                     case 2:
                             System.out.println("Enter Student ID: ");
                             int searchID = input.nextInt();
                           
-                            searchStudent(students, searchID);
+                            StudentService.searchStudent(students, searchID);
 
                     break;
                     case 3:
@@ -103,7 +54,7 @@ public class StudentManagementSystem {
                     case 4:
                         System.out.println("Enter Student ID: ");
                         int deleteID = input.nextInt();
-                        deleteStudent(students,deleteID);
+                        StudentService.deleteStudent(students,deleteID);
                     break;
                      case 5:
                         System.out.println("Enter Student ID to update: ");
@@ -114,7 +65,7 @@ public class StudentManagementSystem {
                         System.out.println("Enter New Student Age: ");
                         int newAge = input.nextInt();
                         
-                        updateStudent(students,updateId, newName, newAge);
+                        StudentService.updateStudent(students,updateId, newName, newAge);
                         
                     break;
                     case 6:
