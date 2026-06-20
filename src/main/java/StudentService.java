@@ -1,6 +1,3 @@
-
-import java.util.ArrayList;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -10,6 +7,12 @@ import java.util.ArrayList;
  *
  * @author sanja
  */
+import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class StudentService {
     
     public static void  searchStudent( ArrayList<Student> students, int id) {
@@ -56,6 +59,38 @@ public class StudentService {
         }
        System.out.println("Student not found");  
         
+    }
+    
+     public static void saveStudents(ArrayList<Student> students) {
+        try(FileWriter writer = new FileWriter("students.txt")){
+            for(Student s: students) {
+                writer.write(s.getId()+","+s.getName()+","+s.getAge()+"\n");
+            }
+            
+        }catch(IOException e){
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+     
+    public static ArrayList<Student> loadStudents() {
+        ArrayList<Student> students = new ArrayList<>();
+        
+        try(BufferedReader reader = new BufferedReader(new FileReader("students.txt"))){
+            String line;
+            while((line = reader.readLine())!= null){
+                String[] data = line.split(",");
+                
+                int id = Integer.parseInt(data[0]);
+                String name = data[1];
+                int age = Integer.parseInt(data[2]);
+                Student student = new Student(id,name,age);
+                students.add(student); 
+            }
+        }catch(IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+        
+        return students; 
     }
     
 }

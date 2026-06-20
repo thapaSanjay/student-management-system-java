@@ -11,12 +11,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class StudentManagementSystem {
    
+   
     public static void main(String[] args) {
+       
+        ArrayList<Student> students = StudentService.loadStudents();
         
-        ArrayList<Student> students = new ArrayList<>();
-        students.add(new Student(1,"Sanjay Thapa",29));
-        students.add(new Student(2,"Sabin Sapkota",28));
-        students.add(new Student(3,"Pukar Katwal",26)); 
         Scanner input = new Scanner(System.in);
         boolean isTrue = true;
         while(isTrue) {
@@ -49,12 +48,34 @@ public class StudentManagementSystem {
                          String name = input.nextLine();
                          System.out.println("Enter Student Age: ");
                           int age = input.nextInt();
-                          students.add(new Student(addId,name, age));
+                          if(age <= 0) {
+                              System.out.println("Invalid age!");
+                              return;
+                          }
+                          
+                          boolean exists = false;
+
+                            for (Student s : students) {
+                                if (s.getId() == addId) {
+                                    exists = true;
+                                    break;
+                                }
+                            }
+
+                            if (exists) {
+                                System.out.println("Student ID already exists!");
+                            } else {
+                                students.add(new Student(addId, name, age));
+                                students.sort((s1, s2) -> s1.getId() - s2.getId());
+                                StudentService.saveStudents(students);
+                            }
+                          
                     break;
                     case 4:
                         System.out.println("Enter Student ID: ");
                         int deleteID = input.nextInt();
                         StudentService.deleteStudent(students,deleteID);
+                        StudentService.saveStudents(students);
                     break;
                      case 5:
                         System.out.println("Enter Student ID to update: ");
@@ -66,6 +87,7 @@ public class StudentManagementSystem {
                         int newAge = input.nextInt();
                         
                         StudentService.updateStudent(students,updateId, newName, newAge);
+                        StudentService.saveStudents(students);
                         
                     break;
                     case 6:
