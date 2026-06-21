@@ -47,6 +47,12 @@ Modify student name and age.
 ### Delete
 Remove students from the system using their ID.
 
+## How to Run
+- Clone the repository.
+- Open the project in NetBeans or any Java IDE.
+- Compile and run the application.
+- Use the menu to manage student records.
+
 ## Learning Outcomes
 
 This project helped me practice:
