@@ -1,14 +1,16 @@
 # Student Management System
 
-A simple Java console-based application for managing student records using Object-Oriented Programming (OOP) principles and CRUD operations.
+A console-based Student Management System developed in Java. This application allows users to manage student records through a simple menu-driven interface. The project demonstrates Object-Oriented Programming (OOP), file handling, data validation, and Git version control.
 
 ## Features
 - View all students
-- Search student by ID
+- Search students by ID
 - Add new students
-- Update student information
-- Delete student records
-- Menu-driven console interface
+- Update existing student information
+- Delete students
+- Prevent duplicate student IDs
+- Save student data to a file
+- Load student data automatically when the application starts
 
 ## Technologies Used
 
@@ -17,6 +19,7 @@ A simple Java console-based application for managing student records using Objec
 - ArrayList
 - Scanner
 - Git
+- File Handling (FileReader, FileWriter, BufferedReader)
 - GitHub
 
 ## Project Structure
@@ -25,6 +28,7 @@ A simple Java console-based application for managing student records using Objec
 StudentManagementSystem/
 │
 ├── Student.java
+├── StudentService.java
 ├── StudentManagementSystem.java
 └── README.md
 ```
@@ -56,15 +60,20 @@ This project helped me practice:
 - User Input using Scanner
 - CRUD Operations
 - Git and GitHub Workflow
+- File Handling
+- Exception Handling
+- Service Layer Design
+- Data Validation
 
 ## Future Improvements
 
-- Prevent duplicate student IDs
-- Save data to files
-- Connect to a database (MySQL)
-- Build a GUI version
-- Convert to a Spring Boot REST API
+- Database integration using MySQL
+- Graphical User Interface (GUI)
+- Advanced search and filtering
+- Student sorting options
+- REST API implementation using Spring Boot
 
 ## Author
 
 Sanjay Thapa
+Java Developer Student | Master of Information Technology
